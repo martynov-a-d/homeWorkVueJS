@@ -76,15 +76,18 @@ $btn-orange: orange;
   color: #2c3e50;
   margin-top: 60px;
 }
+// Кнопки калькулятора
 button {
   padding: 10px;
   margin: 10px;
 }
+// Кнопки действия
 .btn-action {
   background-color: $btn-orange;
   color: white;
   font-weight: 900;
 }
+//Кнопки чисел
 .btn-number {
   display: flex;
   flex-wrap: wrap;
