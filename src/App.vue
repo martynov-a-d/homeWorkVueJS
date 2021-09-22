@@ -10,29 +10,17 @@
       = {{ result }}
     </div>
     <div class="keyboard">
-      <button v-on:click="result = operand1 + operand2" class="btn-action">
-        +
-      </button>
-      <button v-on:click="result = operand1 - operand2" class="btn-action">
-        -
-      </button>
-      <button v-on:click="result = operand1 / operand2" class="btn-action">
-        /
-      </button>
-      <button v-on:click="result = operand1 * operand2" class="btn-action">
-        *
-      </button>
-      <button v-on:click="result = operand1 ** operand2" class="btn-action">
-        ^
-      </button>
-      <button
-        v-on:click="result = parseInt(operand1 / operand2)"
-        class="btn-action"
-      >
-        !/
-      </button>
+      <button @click="add" class="btn-action">+</button>
+      <button @click="subtraction" class="btn-action">-</button>
+      <button @click="division" class="btn-action">/</button>
+      <button @click="multiplication" class="btn-action">*</button>
+      <button @click="exponentiation" class="btn-action">^</button>
+      <button @click="redevision" class="btn-action">!/</button>
     </div>
-    <!-- <div class="btn-number">
+    <div class="flagsNum">
+      <input type="checkbox" id="checkbox" v-model="checked" />
+    </div>
+    <div v-show="checked" class="btn-number">
       <button v-on:click="1">1</button>
       <button v-on:click="2">2</button>
       <button v-on:click="3">3</button>
@@ -43,7 +31,7 @@
       <button v-on:click="8">8</button>
       <button v-on:click="9">9</button>
       <button v-on:click="0">0</button>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -62,6 +50,26 @@ export default {
       operand2: 0,
       result: 0,
     };
+  },
+  methods: {
+    add() {
+      this.result = this.operand1 + this.operand2;
+    },
+    subtraction() {
+      this.result = this.operand1 - this.operand2;
+    },
+    multiplication() {
+      this.result = this.operand1 * this.operand2;
+    },
+    division() {
+      this.result = this.operand1 / this.operand2;
+    },
+    exponentiation() {
+      this.result = this.operand1 ** this.operand2;
+    },
+    redevision() {
+      this.result = parseInt(this.operand1 / this.operand2);
+    },
   },
 };
 </script>
