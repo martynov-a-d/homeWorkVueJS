@@ -18,9 +18,9 @@
       <button @click="redevision" class="btn-action">!/</button>
     </div>
     <div class="flagsNum">
-      <input type="checkbox" id="checkbox" v-model="checked" />
+      <input type="checkbox" id="btnBumShow" v-model="checked" />
     </div>
-    <div v-show="checked" class="btn-number">
+    <div v-show="btnBumShow" class="btn-number">
       <button v-on:click="1">1</button>
       <button v-on:click="2">2</button>
       <button v-on:click="3">3</button>
