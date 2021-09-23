@@ -18,19 +18,19 @@
       <button @click="redevision" class="btn-action">!/</button>
     </div>
     <div class="flagsNum">
-      <input type="checkbox" id="btnBumShow" v-model="checked" />
+      <input type="checkbox" id="!isHidden" v-model="isHidden" />
     </div>
-    <div v-show="btnBumShow" class="btn-number">
-      <button v-on:click="1">1</button>
-      <button v-on:click="2">2</button>
-      <button v-on:click="3">3</button>
-      <button v-on:click="4">4</button>
-      <button v-on:click="5">5</button>
-      <button v-on:click="6">6</button>
-      <button v-on:click="7">7</button>
-      <button v-on:click="8">8</button>
-      <button v-on:click="9">9</button>
-      <button v-on:click="0">0</button>
+    <div v-show="isHidden" class="btn-number">
+      <button @click="1">1</button>
+      <button @click="2">2</button>
+      <button @click="3">3</button>
+      <button @click="4">4</button>
+      <button @click="5">5</button>
+      <button @click="6">6</button>
+      <button @click="7">7</button>
+      <button @click="8">8</button>
+      <button @click="9">9</button>
+      <button @click="0">0</button>
     </div>
   </div>
 </template>
@@ -49,6 +49,7 @@ export default {
       operand1: 0,
       operand2: 0,
       result: 0,
+      isHidden: false,
     };
   },
   methods: {
