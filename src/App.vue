@@ -169,7 +169,20 @@ export default {
       this.result = parseInt(this.operand1 / this.operand2);
     },
     delFals() {
-      console.log("Удалить символ из строки");
+      // console.log(this.operand1.toString().split("").length);
+      // console.log(
+      //   parseInt(
+      //     this.operand1
+      //       .toString()
+      //       .substring(0, this.operand1.toString().length - 1)
+      //   )
+      // );
+      this.operand1 = parseInt(
+        this.operand1
+          .toString()
+          .substring(0, this.operand1.toString().length - 1)
+      );
+      // this.$set(this.operand1.toString().split("").pop().numbers);
     },
   },
 };
