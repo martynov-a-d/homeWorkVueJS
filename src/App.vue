@@ -5,9 +5,13 @@
   </div> -->
   <div id="app">
     <div class="display">
-      <input v-model.number="operand1" />
-      <input v-model.number="operand2" />
-      = {{ result }}
+      <label for="operand1">Операнд 1</label>
+      <label for="operand2">Операнд 2</label>
+      <div class="operand_display">
+        <input v-model.number="operand1" />
+        <input v-model.number="operand2" />
+        = {{ result }}
+      </div>
     </div>
     <div class="keyboard">
       <button @click="add" class="btn-action">+</button>
@@ -16,6 +20,7 @@
       <button @click="multiplication" class="btn-action">*</button>
       <button @click="exponentiation" class="btn-action">^</button>
       <button @click="redevision" class="btn-action">!/</button>
+      <button @click="delFals">Del</button>
     </div>
     <div class="flagsNum">
       <input type="checkbox" id="!isHidden" v-model="isHidden" />
@@ -70,6 +75,9 @@ export default {
     },
     redevision() {
       this.result = parseInt(this.operand1 / this.operand2);
+    },
+    delFals() {
+      console.log("Удалить символ из строки");
     },
   },
 };
