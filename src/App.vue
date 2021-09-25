@@ -3,39 +3,34 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div> -->
-  <div id="app">
+  <div id="app" class="calc-block">
     <div class="display">
       <label for="operand1">Операнд 1</label>
       <label for="operand2">Операнд 2</label>
       <div class="operand_display">
+        <p class="error" v-if="error">ERROR</p>
         <input v-model.number="operand1" />
         <input v-model.number="operand2" />
         = {{ result }}
       </div>
     </div>
-    <div class="keyboard">
-      <button @click="add" class="btn-action">+</button>
-      <button @click="subtraction" class="btn-action">-</button>
-      <button @click="division" class="btn-action">/</button>
-      <button @click="multiplication" class="btn-action">*</button>
-      <button @click="exponentiation" class="btn-action">^</button>
-      <button @click="redevision" class="btn-action">!/</button>
-      <button @click="delFals">Del</button>
-    </div>
+    <button
+      v-for="item in operators"
+      :key="item.name"
+      @click="calcHandler(item.action)"
+      class="btn-action"
+    >
+      {{ item.name }}
+    </button>
+    <button @click="delFals">Del</button>
+    <div class="keyboard"></div>
     <div class="flagsNum">
       <input type="checkbox" id="!isHidden" v-model="isHidden" />
     </div>
     <div v-show="isHidden" class="btn-number">
-      <button @click="1">1</button>
-      <button @click="2">2</button>
-      <button @click="3">3</button>
-      <button @click="4">4</button>
-      <button @click="5">5</button>
-      <button @click="6">6</button>
-      <button @click="7">7</button>
-      <button @click="8">8</button>
-      <button @click="9">9</button>
-      <button @click="0">0</button>
+      <button v-for="item in numbers" :key="item.name" class="btn-number_elem">
+        {{ item.name }}
+      </button>
     </div>
   </div>
 </template>
@@ -54,10 +49,107 @@ export default {
       operand1: 0,
       operand2: 0,
       result: 0,
+      error: false,
       isHidden: false,
+      operators: [
+        {
+          name: "+",
+          action: "+",
+        },
+        {
+          name: "-",
+          action: "-",
+        },
+        {
+          name: "*",
+          action: "*",
+        },
+        {
+          name: "/",
+          action: "/",
+        },
+        {
+          name: "^",
+          action: "**",
+        },
+        {
+          name: "!/",
+          action: "/",
+        },
+      ],
+      numbers: [
+        {
+          name: "1",
+          action: "1",
+        },
+        {
+          name: "2",
+          action: "2",
+        },
+        {
+          name: "3",
+          action: "3",
+        },
+        {
+          name: "4",
+          action: "4",
+        },
+        {
+          name: "5",
+          action: "5",
+        },
+        {
+          name: "6",
+          action: "6",
+        },
+        {
+          name: "7",
+          action: "7",
+        },
+        {
+          name: "8",
+          action: "8",
+        },
+        {
+          name: "9",
+          action: "9",
+        },
+        {
+          name: "0",
+          action: "0",
+        },
+      ],
     };
   },
   methods: {
+    calcHandler(item) {
+      switch (item) {
+        case "+":
+          this.add();
+          break;
+        case "-":
+          this.subtraction();
+          break;
+        case "*":
+          this.multiplication();
+          break;
+        case "/":
+          if (this.operand2 !== 0) {
+            this.division();
+          } else {
+            this.error = true;
+          }
+          break;
+        case "**":
+          this.exponentiation();
+          break;
+        case "!/":
+          this.redevision();
+          break;
+        default:
+          break;
+      }
+    },
     add() {
       this.result = this.operand1 + this.operand2;
     },
@@ -86,12 +178,27 @@ export default {
 <style lang="scss">
 $btn-orange: orange;
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.calc-block {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 400px;
+  max-height: 400px;
+  background-color: cornsilk;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+label {
+  margin: 20px;
+}
+.error {
+  color: red;
 }
 // Кнопки калькулятора
 button {
