@@ -160,7 +160,7 @@ export default {
       this.result = this.operand1 ** this.operand2;
     },
     redevision() {
-      this.result = parseInt(this.operand1 / this.operand2);
+      this.result = Math.trunc(this.operand1 / this.operand2);
     },
     delFals() {
 
