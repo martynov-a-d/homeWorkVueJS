@@ -24,7 +24,7 @@
       <input type="checkbox" id="!isHidden" v-model="isHidden" />
     </div>
     <div v-show="isHidden" class="btn-number">
-      <button v-for="item in numbers" :key="item.name" class="btn-number_elem">
+      <button v-for="item in numbers" :key="item.name" @click="btnHandler(item.name)" class="btn-number_elem">
         {{ item.name }}
       </button>
     </div>
@@ -112,6 +112,10 @@ export default {
     };
   },
   methods: {
+    btnHandler(item) {
+          this.operand1 += item;
+          console.log(+this.operand1);
+    },
     calcHandler(item) {
       switch (item) {
         case "+":
@@ -159,20 +163,12 @@ export default {
       this.result = parseInt(this.operand1 / this.operand2);
     },
     delFals() {
-      // console.log(this.operand1.toString().split("").length);
-      // console.log(
-      //   parseInt(
-      //     this.operand1
-      //       .toString()
-      //       .substring(0, this.operand1.toString().length - 1)
-      //   )
-      // );
+
       this.operand1 = parseInt(
         this.operand1
           .toString()
           .substring(0, this.operand1.toString().length - 1)
       );
-      // this.$set(this.operand1.toString().split("").pop().numbers);
     },
   },
 };
