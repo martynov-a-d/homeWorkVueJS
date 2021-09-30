@@ -5,8 +5,8 @@
       <label for="operand2">Операнд 2</label>
       <div class="operand_display">
         <p class="error" v-if="error">ERROR</p>
-        <input v-model.number:data="operand1" />
-        <input v-model.number:data="operand2" />
+        <input v-model.number="operand1" />
+        <input v-model.number="operand2" />
         = {{ result }}
       </div>
     </div>
@@ -156,7 +156,7 @@ export default {
       this.result = this.operand1 ** this.operand2;
     },
     redevision() {
-      this.result = parseInt(this.operand1 / this.operand2);
+      this.result = parseInt(this.operand1 / this.operand);
     },
     delFals() {
       // console.log(this.operand1.toString().split("").length);
