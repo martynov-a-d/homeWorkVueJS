@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     btnHandler(item) {
-          this.operand1 += item;
+          this.operand1 = parseInt(this.operand1 += item);
           console.log(+this.operand1);
     },
     calcHandler(item) {
