@@ -18,16 +18,31 @@
     >
       {{ item.name }}
     </button>
-    <button @click="delFals">Del</button>
+    <button @click="delFals(checked)">Del</button>
     <div class="keyboard"></div>
     <div class="flagsNum">
       <input type="checkbox" id="!isHidden" v-model="isHidden" />
     </div>
-    <div v-show="isHidden" class="btn-number">
-      <button v-for="item in numbers" :key="item.name" @click="btnHandler(item.name)" class="btn-number_elem">
-        {{ item.name }}
-      </button>
-    </div>
+
+        <div v-show="isHidden" class="btn-number">
+            <div>
+                <input type="radio" id="firstOperand" value="operand1" v-model="checked"/>
+                <label>Первый операнд</label>
+                <input type="radio" id="secondOperand" value="operand2" v-model="checked"/>
+                <label>Второй операнд</label>
+                <p>{{ checked }}</p>
+            </div>
+            <div>
+                <button 
+                    v-for="item in numbers" 
+                    :key="item.name" 
+                    @click="btnHandler(item.name, checked)" 
+                    class="btn-number_elem"
+                >
+                    {{ item.name }}
+                </button>
+            </div>
+        </div>
   </div>
 </template>
 
@@ -39,6 +54,8 @@ export default {
       operand1: 0,
       operand2: 0,
       result: 0,
+      checked: " ",
+      test: " ",
       error: false,
       isHidden: false,
       operators: [
@@ -112,9 +129,26 @@ export default {
     };
   },
   methods: {
-    btnHandler(item) {
+    /**
+        Пока что не работает, туплю дальше
+     */
+    testHandler(elem) {
+        if(elem == "operand1") {
+            this.test = this.operand1;
+        } else {
+            this.test = this.operand2;
+        }
+    },
+    btnHandler(item, elem) {
+        if(elem == "operand1") {
           this.operand1 = parseInt(this.operand1 += item);
           console.log(+this.operand1);
+          console.log(elem);
+        } else {
+          this.operand2 = parseInt(this.operand2 += item);
+          console.log(+this.operand2);
+          console.log(elem);
+        }
     },
     calcHandler(item) {
       switch (item) {
@@ -162,13 +196,23 @@ export default {
     redevision() {
       this.result = Math.trunc(this.operand1 / this.operand2);
     },
-    delFals() {
-
-      this.operand1 = parseInt(
-        this.operand1
-          .toString()
-          .substring(0, this.operand1.toString().length - 1)
-      );
+    /**
+        Дописать кнопку Del
+     */
+    delFals(elem) {
+        if(elem == "operand1") {
+            this.operand1 = parseInt(
+                this.operand1
+                .toString()
+                .substring(0, this.operand1.toString().length - 1)
+            );
+        } else {
+            this.operand2 = parseInt(
+                this.operand2
+                .toString()
+                .substring(0, this.operand2.toString().length - 1)
+            );
+        }
     },
   },
 };
