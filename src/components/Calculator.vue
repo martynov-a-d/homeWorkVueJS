@@ -81,7 +81,7 @@ export default {
         },
         {
           name: "!/",
-          action: "/",
+          action: "!/",
         },
       ],
       numbers: [
