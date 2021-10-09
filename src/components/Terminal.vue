@@ -10,9 +10,9 @@
           <td class="title_table-elem">Value</td>
         </tr>
         <tr v-for="elem in purchase" :key="elem.id">
-          <td class="table_elem">{{ elem.date }}</td>
-          <td class="table_elem">{{ elem.name }}</td>
-          <td class="table_elem">{{ elem.price }}</td>
+          <td class="table_elem" v-bind:date="date">{{ elem.date }}</td>
+          <td class="table_elem" v-bind:name="name">{{ elem.name }}</td>
+          <td class="table_elem" v-bind:price="price">{{ elem.price }}</td>
         </tr>
       </table>
     </div>
@@ -21,6 +21,12 @@
 
 <script>
 export default {
+    props: [
+        'id',
+        'name',
+        'date',
+        'price',
+    ],
   data() {
     return {
       purchase: [
