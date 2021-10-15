@@ -21,5 +21,9 @@ export default {
     Calculator,
     Terminal,
   },
+  data() {
+    return {
+    };
+  },
 };
 </script>

@@ -2,6 +2,7 @@
   <div>
     <div class="table-block">
       <h3>Mypersonal coasts</h3>
+      <AddNewTrans />
       <button>Add new coast</button>
       <table>
         <tr class="title_table">
@@ -10,9 +11,11 @@
           <td class="title_table-elem">Value</td>
         </tr>
         <tr v-for="elem in purchase" :key="elem.id">
-          <td class="table_elem" v-bind:date="date">{{ elem.date }}</td>
-          <td class="table_elem" v-bind:name="name">{{ elem.name }}</td>
-          <td class="table_elem" v-bind:price="price">{{ elem.price }}</td>
+          <PayDisplay 
+            :date="elem.date"
+            :name="elem.name"
+            :price="elem.price"
+          />
         </tr>
       </table>
     </div>
@@ -20,13 +23,9 @@
 </template>
 
 <script>
+import AddNewTrans from "./AddNewTrans.vue";
+import PayDisplay from "./PayDisplay.vue";
 export default {
-    props: [
-        'id',
-        'name',
-        'date',
-        'price',
-    ],
   data() {
     return {
       purchase: [
@@ -45,14 +44,18 @@ export default {
       ],
     };
   },
+  components: {
+    AddNewTrans,
+    PayDisplay,
+  }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .table-block {
   margin: 0 auto;
   width: 300px;
-  height: 300px;
+  // max-height: 500px;
   background: lightgrey;
   color: black;
 }
