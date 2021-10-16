@@ -1,11 +1,17 @@
 <template>
   <div id="app">
     <!-- Component HelloWord -->
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <button @click="isVisibleBlock('isHidenHW')">Hello World</button>
+    <div v-show="isHidenHW">
+      <img alt="Vue logo" src="./assets/logo.png" />
+      <HelloWorld msg="Welcome to Your Vue.js App" />
+    </div>
     <!-- Component calc -->
-    <Calculator />
-    <Terminal />
+    <button @click="isVisibleBlock('isHidenCalc')">Calculator</button>
+    <Calculator v-show="isHidenCalc"/>
+    <!-- Component term -->
+    <button @click="isVisibleBlock('isHidenTerm')">Terminal</button>
+    <Terminal v-show="isHidenTerm"/>
   </div>
 </template>
 
@@ -23,7 +29,35 @@ export default {
   },
   data() {
     return {
+      isHidenCalc: false,
+      isHidenTerm: false,
+      isHidenHW: false,
     };
+  },
+  props: {
+        date: String,
+        name: String,
+        price: Number,
+    },
+  methods: {
+    isVisibleBlock (elem) {
+      switch (elem) {
+        case "isHidenHW":
+          this.isHidenHW = ! this.isHidenHW;
+          break;
+
+        case "isHidenCalc":
+          this.isHidenCalc = !this.isHidenCalc;
+          break;
+
+        case "isHidenTerm":
+          this.isHidenTerm = !this.isHidenTerm;
+          break;
+
+        default:
+          break;
+      }
+    }
   },
 };
 </script>
