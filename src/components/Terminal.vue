@@ -18,6 +18,7 @@
           />
         </tr>
       </table>
+      <PaginationBlock />
     </div>
   </div>
 </template>
@@ -25,6 +26,7 @@
 <script>
 import AddNewTrans from "./AddNewTrans.vue";
 import PayDisplay from "./PayDisplay.vue";
+import PaginationBlock from "./PaginationBlock.vue";
 export default {
   data() {
     return {
@@ -61,11 +63,12 @@ export default {
   components: {
     AddNewTrans,
     PayDisplay,
+    PaginationBlock,
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .payDisplay-title {
   display: flex;
   justify-content: space-around;
