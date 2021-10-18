@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
     props: {
         date: String,
@@ -15,13 +16,15 @@ export default {
         price: Number,
     },
     methods: {
+        ...mapMutations([
+            'addNewTrans'
+        ]),
         addCoast() {
-            const newPayElem = {
+            this.addNewTrans({
                 date: this.date,
                 name: this.name,
                 price: +this.price,
-            }
-        this.$emit('addNewTrans', newPayElem)
+            })
         }
     }
 }

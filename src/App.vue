@@ -34,11 +34,6 @@ export default {
       isHidenHW: false,
     };
   },
-  props: {
-        date: String,
-        name: String,
-        price: Number,
-    },
   methods: {
     isVisibleBlock (elem) {
       switch (elem) {
