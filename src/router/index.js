@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import HelloWorld from '../components/HelloWorld.vue';
 import Calculator from '../components/Calculator.vue';
 import Terminal from '../components/Terminal.vue';
+import AddNewTrans from '../components/AddNewTrans.vue';
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
             path: '/terminal',
             name: 'terminal',
             component: Terminal,
+        },
+        {
+            path: '/add',
+            name: 'addNewTrans',
+            component: AddNewTrans,
         },
         {
             path: '*',

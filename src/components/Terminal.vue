@@ -2,13 +2,15 @@
   <div>
     <div class="table-block">
       <h3>Mypersonal coasts</h3>
+      <router-link to="/add">Add new coast</router-link>
+      <router-view />
       <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans"/>
       <button @click="isVisible">Add new coast</button>
-        <div class="payDisplay-title">
-          <p class="titleElem">Date</p>
-          <p class="titleElem">Category</p>
-          <p class="titleElem">Value</p>
-        </div>
+      <div class="payDisplay-title">
+        <p class="titleElem">Date</p>
+        <p class="titleElem">Category</p>
+        <p class="titleElem">Value</p>
+      </div>
       <table>
         <tr v-for="elem in getPurchaseList" :key="elem.id" class="payDisplay-block">
           <PayDisplay 
