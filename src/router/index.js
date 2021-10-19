@@ -11,6 +11,10 @@ export default new Router({
     mode: 'history',
     routes: [
         {
+            path: '/',
+            name: 'home',
+        },
+        {
             path: '/helloWorld',
             name: 'helloWorld',
             component: HelloWorld,
@@ -24,6 +28,10 @@ export default new Router({
             path: '/terminal',
             name: 'terminal',
             component: Terminal,
-        }
+        },
+        {
+            path: '*',
+            name: '404',
+        },
     ]
 })

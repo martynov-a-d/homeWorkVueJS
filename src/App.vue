@@ -2,9 +2,9 @@
   <div id="app">
     <!-- Component VueRouter for nav -->
     <header>
-      <router-link to="/helloWorld">HelloWorld</router-link>
-      <router-link to="/calculator">Calculator</router-link>
-      <router-link to="/terminal">Terminal</router-link>
+      <router-link to="/helloWorld" class="nav-elem_router">HelloWorld</router-link>
+      <router-link to="/calculator" class="nav-elem_router">Calculator</router-link>
+      <router-link to="/terminal" class="nav-elem_router">Terminal</router-link>
     </header>
     <router-view />
     <!-- Component HelloWord -->
@@ -41,9 +41,9 @@ export default {
   },
   data() {
     return {
-      isHidenCalc: false,
-      isHidenTerm: false,
-      isHidenHW: false,
+      // isHidenCalc: false,
+      // isHidenTerm: false,
+      // isHidenHW: false,
     };
   },
   methods: {
@@ -68,3 +68,16 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  header {
+    margin: 0 auto;
+    width: 80vw;
+    display: flex;
+  }
+  .nav-elem_router {
+    display: block;
+    margin: 10px;
+    padding: 5px;
+  }
+</style>
