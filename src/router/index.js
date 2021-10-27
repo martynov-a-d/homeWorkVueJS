@@ -27,13 +27,26 @@ export default new Router({
         },
         {
             path: '/terminal',
-            name: 'terminal',
+            // name: 'terminal',
             component: Terminal,
-        },
-        {
-            path: '/add',
-            name: 'addNewTrans',
-            component: AddNewTrans,
+            children: [
+                {
+                    path: '/',
+                    name: 'form'
+                },
+                {
+                    path: '/terminal/add',
+                    // name: 'addNewTrans',
+                    component: AddNewTrans,
+                    children: [
+                        {
+                            path: '/terminal/add/tea?price=240',
+                            name: 'addNewTrans',
+                            component: AddNewTrans,
+                        },
+                    ],
+                },
+            ]
         },
         {
             path: '*',

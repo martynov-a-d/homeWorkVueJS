@@ -2,21 +2,23 @@
   <div>
     <div class="table-block">
       <h3>Mypersonal coasts</h3>
-      <router-link to="/add">Add new coast</router-link>
+      <router-link to="/terminal/add">Add new coast</router-link>
       <router-view />
-      <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans"/>
-      <button @click="isVisible">Add new coast</button>
+      <button @click="speedDial">tea</button>
+      <!-- <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans" /> -->
+      <!-- <button @click="isVisible">Add new coast</button> -->
       <div class="payDisplay-title">
         <p class="titleElem">Date</p>
         <p class="titleElem">Category</p>
         <p class="titleElem">Value</p>
       </div>
       <table>
-        <tr v-for="elem in getPurchaseList" :key="elem.id" class="payDisplay-block">
-          <PayDisplay 
-            :date="elem.date"
-            :name="elem.name"
-            :price="elem.price" />
+        <tr
+          v-for="elem in getPurchaseList"
+          :key="elem.id"
+          class="payDisplay-block"
+        >
+          <PayDisplay :date="elem.date" :name="elem.name" :price="elem.price" />
         </tr>
       </table>
       <PaginationBlock />
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-import AddNewTrans from "./AddNewTrans.vue";
+// import AddNewTrans from "./AddNewTrans.vue";
 import PayDisplay from "./PayDisplay.vue";
 import PaginationBlock from "./PaginationBlock.vue";
 import { mapMutations, mapGetters, mapActions } from "vuex";
@@ -45,29 +47,29 @@ export default {
         elem.target.innerHTML = "Add new coast";
       }
     },
-    ...mapActions([
-      'fetchData'
-      ]),
-    ...mapMutations([
-      'setPurchaseListData', 'addNewTrans'
-    ])
+    /**
+     * Логика кнопки быстрого набора в форму
+     */
+    speedDial() {
+      this.$router.push({ path: "/terminal/add/tea", query: { price: "240" } });
+    },
+    ...mapActions(["fetchData"]),
+    ...mapMutations(["setPurchaseListData", "addNewTrans"]),
   },
   computed: {
-    ...mapGetters([
-      'getPurchaseList'
-    ])
+    ...mapGetters(["getPurchaseList"]),
   },
   mounted() {
-    this.fetchData()
+    this.fetchData();
   },
   components: {
-    AddNewTrans,
+    // AddNewTrans,
     PayDisplay,
     PaginationBlock,
   },
   created() {
-    this.setPurchaseListData(this.fetchData())
-  }
+    this.setPurchaseListData(this.fetchData());
+  },
 };
 </script>
 
