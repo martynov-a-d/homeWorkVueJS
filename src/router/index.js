@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import HelloWorld from '../components/HelloWorld.vue';
-import Calculator from '../components/Calculator.vue';
+// import HelloWorld from '../components/HelloWorld.vue';
+// import Calculator from '../components/Calculator.vue';
 import Terminal from '../components/Terminal.vue';
 import AddNewTrans from '../components/AddNewTrans.vue';
 
@@ -18,12 +18,14 @@ export default new Router({
         {
             path: '/helloWorld',
             name: 'helloWorld',
-            component: HelloWorld,
+            // component: HelloWorld,
+            component: () => import('../components/HelloWorld.vue'),
         },
         {
             path: '/calculator',
             name: 'calculator',
-            component: Calculator,
+            // component: Calculator,
+            component: () => import('../components/Calculator.vue'),
         },
         {
             path: '/terminal',
@@ -40,8 +42,18 @@ export default new Router({
                     component: AddNewTrans,
                     children: [
                         {
-                            path: '/terminal/add/tea?price=240',
-                            name: 'addNewTrans',
+                            path: '/terminal/add',
+                            name: 'food',
+                            component: AddNewTrans,
+                        },
+                        {
+                            path: '/terminal/add',
+                            name: 'transport',
+                            component: AddNewTrans,
+                        },
+                        {
+                            path: '/terminal/add',
+                            name: 'entertainment',
                             component: AddNewTrans,
                         },
                     ],

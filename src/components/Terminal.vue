@@ -4,7 +4,9 @@
       <h3>Mypersonal coasts</h3>
       <router-link to="/terminal/add">Add new coast</router-link>
       <router-view />
-      <button @click="speedDial">tea</button>
+      <button @click="speedDial('food', 200)">food</button>
+      <button @click="speedDial('transport', 50)">transport</button>
+      <button @click="speedDial('entertainment', 2000)">entertainment</button>
       <!-- <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans" /> -->
       <!-- <button @click="isVisible">Add new coast</button> -->
       <div class="payDisplay-title">
@@ -50,8 +52,10 @@ export default {
     /**
      * Логика кнопки быстрого набора в форму
      */
-    speedDial() {
-      this.$router.push({ path: "/terminal/add/tea", query: { price: "240" } });
+    speedDial(elem, value) {
+      this.$router.push({ name: elem, query: { price: value } });
+      console.log(this.$route);
+      console.log(this.$route.query);
     },
     ...mapActions(["fetchData"]),
     ...mapMutations(["setPurchaseListData", "addNewTrans"]),
