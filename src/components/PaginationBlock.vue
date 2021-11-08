@@ -1,8 +1,8 @@
 <template>
   <div>
-      <button @click="Pagination">
+      <div>
         {{ pageNum }}    
-      </button>
+      </div>
   </div>
 </template>
 
@@ -11,17 +11,23 @@ export default {
     //---- Объявление переменных ----//
     data () {
         return {
-            dataSourse: '',
+            dataSourse: [],
             pageSize: 5,
             pageNum: 0,
             showNext: false,
         }
     },
-    methods: {
-        Pagination(elem) {
-            elem
-        }
-    }
+    // props: ['list'],
+    // methods: {
+    //     pagination(elem) {
+    //         elem
+    //     }
+    // },
+    // computed: {
+    //     pages() {
+    //         return Math.ceil(this.list.length / 5)
+    //     }
+    // }
 }
 </script>
 

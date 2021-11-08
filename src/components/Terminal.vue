@@ -13,10 +13,7 @@
       <table>
         <tr v-for="elem in getPurchaseList" :key="elem.id" class="payDisplay-block">
           <!-- Блок рендера транзакций -->
-          <PayDisplay 
-            :date="elem.date"
-            :name="elem.name"
-            :price="elem.price" />
+          <PayDisplay :list="elem" />
         </tr>
       </table>
       <!-- Блок пагинации -->
@@ -31,11 +28,12 @@ import PayDisplay from "./PayDisplay.vue";
 import PaginationBlock from "./PaginationBlock.vue";
 import { mapMutations, mapGetters, mapActions } from "vuex";
 export default {
+  //---- Объявление переменных ----//
   data() {
     return {
       isHidenNewTrans: false,
-      purchase: [],
-      res: [],
+      purchase: [], //  Обработанные данные с сервера
+      res: [], // Необработанные данные с сервера
     };
   },
   methods: {

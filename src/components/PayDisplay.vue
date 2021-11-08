@@ -1,8 +1,8 @@
 <template>
   <div class="payDisplay-block">
-    <td class="payDisplay-elem">{{ this.date }}</td>
-    <td class="payDisplay-elem">{{ this.name }}</td>
-    <td class="payDisplay-elem">{{ this.price }}</td>    
+    <td class="payDisplay-elem">{{ this.list.date }}</td>
+    <td class="payDisplay-elem">{{ this.list.name }}</td>
+    <td class="payDisplay-elem">{{ this.list.price }}</td>    
   </div>
 </template>
 
@@ -10,12 +10,7 @@
 export default {
   name: "Terminal",
   //---- Входные параметры ----//
-  props: {
-    id: Number,
-    name: String,
-    date: String,
-    price: Number,
-  },
+  props: ['list'],
 }
 </script>
 
