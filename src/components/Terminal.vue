@@ -82,18 +82,16 @@ export default {
 .table-block {
   margin: 0 auto;
   width: 300px;
-  // max-height: 500px;
   background: lightgrey;
   color: black;
 }
 .payDisplay-elem {
-  // width: 100px;
-  text-align: center;
+  padding: 0 20px;
 }
 .payDisplay-block {
   width: 300px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 * {
   margin: 0;
