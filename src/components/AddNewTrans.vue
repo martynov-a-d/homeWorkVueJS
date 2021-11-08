@@ -10,21 +10,34 @@
 <script>
 import { mapMutations } from 'vuex';
 export default {
-    props: {
-        date: String,
-        name: String,
-        price: Number,
+    //---- Объявление переменных ----//
+    data() {
+        return  {
+            date: '',
+            name: '',
+            price: '',
+        }
     },
     methods: {
         ...mapMutations([
             'addNewTrans'
         ]),
+        //---- Функция добавления новой транзакции ----//
         addCoast() {
+            //---- Передача в мутацию объекта новой транзакции ----//
             this.addNewTrans({
                 date: this.date,
                 name: this.name,
                 price: +this.price,
-            })
+            }),
+            this.test()
+        },
+        //---- Функция обнуления ----//
+        test() {
+            const zeroingOut = '';
+            this.date = zeroingOut 
+            this.name = zeroingOut 
+            this.price = zeroingOut
         }
     }
 }

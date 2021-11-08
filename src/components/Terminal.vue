@@ -2,6 +2,7 @@
   <div>
     <div class="table-block">
       <h3>Mypersonal coasts</h3>
+      <!-- Блок добавления новой транзакции -->
       <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans"/>
       <button @click="isVisible">Add new coast</button>
         <div class="payDisplay-title">
@@ -11,12 +12,14 @@
         </div>
       <table>
         <tr v-for="elem in getPurchaseList" :key="elem.id" class="payDisplay-block">
+          <!-- Блок рендера транзакций -->
           <PayDisplay 
             :date="elem.date"
             :name="elem.name"
             :price="elem.price" />
         </tr>
       </table>
+      <!-- Блок пагинации -->
       <PaginationBlock />
     </div>
   </div>
@@ -32,9 +35,11 @@ export default {
     return {
       isHidenNewTrans: false,
       purchase: [],
+      res: [],
     };
   },
   methods: {
+    //---- Функция показ/скрытие блока добавления новой транзакции ----//
     isVisible: function (elem) {
       this.isHidenNewTrans = !this.isHidenNewTrans;
       if (this.isHidenNewTrans) {
@@ -48,7 +53,7 @@ export default {
       ]),
     ...mapMutations([
       'setPurchaseListData', 'addNewTrans'
-    ])
+    ]),
   },
   computed: {
     ...mapGetters([
@@ -58,6 +63,7 @@ export default {
   mounted() {
     this.fetchData()
   },
+  //---- Объявление компонентов ----//
   components: {
     AddNewTrans,
     PayDisplay,
@@ -68,7 +74,7 @@ export default {
   }
 };
 </script>
-
+<!-- Стили -->
 <style lang="scss" >
 .payDisplay-title {
   display: flex;

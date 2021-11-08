@@ -16,17 +16,20 @@
 </template>
 
 <script>
+//---- import / export ----//
 import HelloWorld from "./components/HelloWorld.vue";
 import Calculator from "./components/Calculator.vue";
 import Terminal from "./components/Terminal.vue";
 
 export default {
   name: "App",
+  //---- Объявление компонентов ----//
   components: {
     HelloWorld,
     Calculator,
     Terminal,
   },
+  //---- Объявление переменных ----//
   data() {
     return {
       isHidenCalc: false,
@@ -35,6 +38,7 @@ export default {
     };
   },
   methods: {
+    //---- Функция скрывающая блоки приложений ----//
     isVisibleBlock (elem) {
       switch (elem) {
         case "isHidenHW":

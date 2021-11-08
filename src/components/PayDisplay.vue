@@ -9,6 +9,7 @@
 <script>
 export default {
   name: "Terminal",
+  //---- Входные параметры ----//
   props: {
     id: Number,
     name: String,
