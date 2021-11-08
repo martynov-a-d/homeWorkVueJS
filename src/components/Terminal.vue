@@ -20,7 +20,7 @@
         </tr>
       </table>
       <!-- Блок пагинации -->
-      <PaginationBlock />
+      <PaginationBlock :list="getPurchaseList" />
     </div>
   </div>
 </template>
