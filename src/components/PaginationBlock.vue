@@ -1,21 +1,25 @@
 <template>
   <div>
-      <button @click="test">
-        {{ count }}    
+      <button @click="Pagination">
+        {{ pageNum }}    
       </button>
   </div>
 </template>
 
 <script>
 export default {
+    //---- Объявление переменных ----//
     data () {
         return {
-            count: 0,
+            dataSourse: '',
+            pageSize: 5,
+            pageNum: 0,
+            showNext: false,
         }
     },
     methods: {
-        test() {
-            console.log(event.target);
+        Pagination(elem) {
+            elem
         }
     }
 }

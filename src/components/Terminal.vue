@@ -2,27 +2,24 @@
   <div>
     <div class="table-block">
       <h3>Mypersonal coasts</h3>
-      <router-link to="/terminal/add">Add new coast</router-link>
-      <router-view />
-      <button @click="speedDial('food', 200)">food</button>
-      <button @click="speedDial('transport', 50)">transport</button>
-      <button @click="speedDial('entertainment', 2000)">entertainment</button>
-      <!-- <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans" /> -->
-      <!-- <button @click="isVisible">Add new coast</button> -->
-      <div class="payDisplay-title">
-        <p class="titleElem">Date</p>
-        <p class="titleElem">Category</p>
-        <p class="titleElem">Value</p>
-      </div>
+      <!-- Блок добавления новой транзакции -->
+      <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans"/>
+      <button @click="isVisible">Add new coast</button>
+        <div class="payDisplay-title">
+          <p class="titleElem">Date</p>
+          <p class="titleElem">Category</p>
+          <p class="titleElem">Value</p>
+        </div>
       <table>
-        <tr
-          v-for="elem in getPurchaseList"
-          :key="elem.id"
-          class="payDisplay-block"
-        >
-          <PayDisplay :date="elem.date" :name="elem.name" :price="elem.price" />
+        <tr v-for="elem in getPurchaseList" :key="elem.id" class="payDisplay-block">
+          <!-- Блок рендера транзакций -->
+          <PayDisplay 
+            :date="elem.date"
+            :name="elem.name"
+            :price="elem.price" />
         </tr>
       </table>
+      <!-- Блок пагинации -->
       <PaginationBlock />
     </div>
   </div>
@@ -38,9 +35,11 @@ export default {
     return {
       isHidenNewTrans: false,
       purchase: [],
+      res: [],
     };
   },
   methods: {
+    //---- Функция показ/скрытие блока добавления новой транзакции ----//
     isVisible: function (elem) {
       this.isHidenNewTrans = !this.isHidenNewTrans;
       if (this.isHidenNewTrans) {
@@ -49,16 +48,12 @@ export default {
         elem.target.innerHTML = "Add new coast";
       }
     },
-    /**
-     * Логика кнопки быстрого набора в форму
-     */
-    speedDial(elem, value) {
-      this.$router.push({ name: elem, query: { price: value } });
-      console.log(this.$route);
-      console.log(this.$route.query);
-    },
-    ...mapActions(["fetchData"]),
-    ...mapMutations(["setPurchaseListData", "addNewTrans"]),
+    ...mapActions([
+      'fetchData'
+      ]),
+    ...mapMutations([
+      'setPurchaseListData', 'addNewTrans'
+    ]),
   },
   computed: {
     ...mapGetters(["getPurchaseList"]),
@@ -66,6 +61,7 @@ export default {
   mounted() {
     this.fetchData();
   },
+  //---- Объявление компонентов ----//
   components: {
     // AddNewTrans,
     PayDisplay,
@@ -76,7 +72,7 @@ export default {
   },
 };
 </script>
-
+<!-- Стили -->
 <style lang="scss" >
 .payDisplay-title {
   display: flex;

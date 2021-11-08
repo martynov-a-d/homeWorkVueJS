@@ -32,17 +32,20 @@
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
-// import Calculator from "./components/Calculator.vue";
-// import Terminal from "./components/Terminal.vue";
+//---- import / export ----//
+import HelloWorld from "./components/HelloWorld.vue";
+import Calculator from "./components/Calculator.vue";
+import Terminal from "./components/Terminal.vue";
 
 export default {
   name: "App",
+  //---- Объявление компонентов ----//
   components: {
     // HelloWorld,
     // Calculator,
     // Terminal,
   },
+  //---- Объявление переменных ----//
   data() {
     return {
       // isHidenCalc: false,
@@ -51,21 +54,25 @@ export default {
     };
   },
   methods: {
-    // isVisibleBlock (elem) {
-    //   switch (elem) {
-    //     case "isHidenHW":
-    //       this.isHidenHW = ! this.isHidenHW;
-    //       break;
-    //     case "isHidenCalc":
-    //       this.isHidenCalc = !this.isHidenCalc;
-    //       break;
-    //     case "isHidenTerm":
-    //       this.isHidenTerm = !this.isHidenTerm;
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // }
+    //---- Функция скрывающая блоки приложений ----//
+    isVisibleBlock (elem) {
+      switch (elem) {
+        case "isHidenHW":
+          this.isHidenHW = ! this.isHidenHW;
+          break;
+
+        case "isHidenCalc":
+          this.isHidenCalc = !this.isHidenCalc;
+          break;
+
+        case "isHidenTerm":
+          this.isHidenTerm = !this.isHidenTerm;
+          break;
+
+        default:
+          break;
+      }
+    }
   },
 };
 </script>

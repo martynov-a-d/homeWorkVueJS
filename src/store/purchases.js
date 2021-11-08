@@ -1,32 +1,32 @@
 export default {
+
     actions: {
-        // url = 'https://raw.githubusercontent.com/lovealex574/homeWorkVueJS/hw_4/dataTranc.json'
-        // fetch(url)
-        //     .then(res => res.json())
-        //     .then(ctx.commit('setPurchaiseListData', test))
+        /**
+         * 
+         * @param {*} ctx 
+         */
         fetchData(ctx) {
-            const res = [
-              {
-                id: 1,
-                name: "eat",
-                date: "2021-10-17",
-                price: 320,
-              },
-              {
-                id: 2,
-                name: "cafe",
-                date: "2021-10-18",
-                price: 540,
-              },
-            ]
-            const test = res;
-            ctx.commit('setPurchaseListData', test)
+
+            const url = 'https://raw.githubusercontent.com/lovealex574/homeWorkVueJS/hw_4/dataTranc.json';
+            fetch(url)
+                .then(res => res.json())
+                .then(result => ctx.commit('setPurchaseListData', result))
         },
     },
     mutations: {
+        /**
+         * 
+         * @param {*} state 
+         * @param {*} purchase Данные с сервера
+         */
         setPurchaseListData(state, purchase) {
             state.purchase = purchase;
         },
+        /**
+         * Добавление в стейт новой транзакции
+         * @param {*} state 
+         * @param {*} elem Объект новой транзакции
+         */
         addNewTrans(state, elem) {
             state.purchase=[...state.purchase, elem]
         },
@@ -35,6 +35,11 @@ export default {
         purchase: [],
     },
     getters: {
+        /**
+         * 
+         * @param {*} state 
+         * @returns 
+         */
         getPurchaseList: state => state.purchase,
     },
 }
