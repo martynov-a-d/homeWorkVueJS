@@ -31,6 +31,7 @@ export default {
             state.purchase=[...state.purchase, elem]
         },
     },
+    //---- Поле State ----//
     state: {
         purchase: [],
     },
