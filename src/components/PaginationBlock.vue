@@ -5,7 +5,7 @@
         :key="item.id" 
         @click="paginationChoice"
       >
-        {{ item.id }}  
+        {{ item.id }} <!-- Выводит нумерацию пагинации -->
       </p>
   </div>
 </template>
@@ -21,16 +21,18 @@ export default {
             showNext: false,
         }
     },
+    //---- Входные параметры ----//
     props: ['list'],
     methods: {
-        //---- Еще не понял для чего эта функция, думаю дальше ----//
+        //---- Не понял для чего эта функция мне, но с нее начало работать ----//
         paginationChoice(e) {
             const elem = +e.target.textContent
-            console.log(elem)
+
             this.dataSourse = this.list
             //---- Не забудь!) ----/
-            console.log(this.dataSourse[elem - 1].id - 1)
-            console.log(this.dataSourse[elem - 1].name)
+            console.log(elem) // Выводит занчение id
+            console.log(this.dataSourse[elem - 1].id - 1) // Выводит значение index
+            console.log(this.dataSourse[elem - 1].name) // Выводит значение name
         }
     },
 }
