@@ -11,7 +11,10 @@
           <p class="titleElem">Value</p>
         </div>
       <table>
-        <tr v-for="elem in getPurchaseList" :key="elem.id" class="payDisplay-block">
+        <tr v-for="elem in getPurchaseList" 
+          :key="elem.id" 
+          class="payDisplay-block"
+        >
           <!-- Блок рендера транзакций -->
           <PayDisplay :list="elem" />
         </tr>
@@ -95,4 +98,15 @@ export default {
   margin: 0;
   padding: 0;
 }
+
+.pagination_block {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: flex;
+  justify-content: center;
+}
+
+  .pagination_block-elem {
+    color: grey;
+    margin: 5px;
+  }
 </style>
