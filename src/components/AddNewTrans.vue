@@ -14,11 +14,14 @@ export default {
     //---- Объявление переменных ----//
     data() {
         return  {
+            id: '',
             date: '',
             name: '',
             price: '',
         }
     },
+    //---- Входные параметры ----//
+    props: ['list'],
     methods: {
         ...mapMutations([
             'addNewTrans'
@@ -27,15 +30,16 @@ export default {
         addCoast() {
             //---- Передача в мутацию объекта новой транзакции ----//
             this.addNewTrans({
+                id: this.list.length + 1, // Получает длинну state и + 1
                 date: this.date,
                 name: this.name,
-                price: +this.price,
+                price: +this.price
             }),
             this.test()
         },
         //---- Функция обнуления ----//
         test() {
-            const zeroingOut = '';
+            const zeroingOut = ''
             this.date = zeroingOut 
             this.name = zeroingOut 
             this.price = zeroingOut

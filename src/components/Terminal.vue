@@ -3,7 +3,7 @@
     <div class="table-block">
       <h3>Mypersonal coasts</h3>
       <!-- Блок добавления новой транзакции -->
-      <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans"/>
+      <AddNewTrans @addNewTrans="addNewTrans" v-show="isHidenNewTrans" :list="getPurchaseList" />
       <button @click="isVisible">Add new coast</button>
         <div class="payDisplay-title">
           <p class="titleElem">Date</p>
