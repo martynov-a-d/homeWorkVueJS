@@ -28,20 +28,34 @@ export default {
         //---- Функция добавления новой транзакции ----//
         addCoast() {
             //---- Передача в мутацию объекта новой транзакции ----//
+            
             this.addNewTrans({
                 id: this.list.length + 1, // Получает длинну state и + 1
-                date: this.date,
+                date: this.correctTime(),
                 name: this.name,
                 price: +this.price
             }),
-            this.test()
+            this.zeroingOut()
         },
         //---- Функция обнуления ----//
-        test() {
+        zeroingOut() {
             const zeroingOut = ''
             this.date = zeroingOut 
             this.name = zeroingOut 
             this.price = zeroingOut
+        },
+        //---- Функция возвращает текущюю дату в случае незаполненого поля даты ----//
+        correctTime() {
+            if(this.date != '') {
+                return this.date
+            } else {
+                const todayDate = new Date()
+                const y = todayDate.getFullYear()
+                const m = todayDate.getMonth()
+                const d = todayDate.getDate()
+                const y_m_d = `${y}-${m}-${d}`
+                return y_m_d
+            }
         }
     }
 }
