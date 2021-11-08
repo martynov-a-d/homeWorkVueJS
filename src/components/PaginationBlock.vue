@@ -1,11 +1,11 @@
 <template>
   <div class="pagination_block">
       <p class="pagination_block-elem" 
-        v-for="item in pageNum" 
+        v-for="item in this.list" 
         :key="item.id" 
         @click="paginationChoice"
       >
-        {{ item.name }}    
+        {{ item.id }}  
       </p>
   </div>
 </template>
@@ -15,53 +15,24 @@ export default {
     //---- Объявление переменных ----//
     data () {
         return {
-            dataSourse: [1],
+            dataSourse: [],
             pageSize: 5,
-            pageNum: [
-                {
-                    id: 1,
-                    name: 1,
-                },
-                {
-                    id: 2,
-                    name: 2,
-                },
-                {
-                    id: 3,
-                    name: 3,
-                },
-                {
-                    id: 4,
-                    name: 4,
-                },
-                {
-                    id: 5,
-                    name: 5,
-                },
-                {
-                    id: 6,
-                    name: 6,
-                }
-            ],
+            pageNum: [],
             showNext: false,
         }
     },
+    props: ['list'],
     methods: {
+        //---- Еще не понял для чего эта функция, думаю дальше ----//
         paginationChoice(e) {
-            console.log(+e.target.textContent);
+            const elem = +e.target.textContent
+            console.log(elem)
+            this.dataSourse = this.list
+            //---- Не забудь!) ----/
+            console.log(this.dataSourse[elem - 1].id - 1)
+            console.log(this.dataSourse[elem - 1].name)
         }
-    }
-    // props: ['list'],
-    // methods: {
-    //     pagination(elem) {
-    //         elem
-    //     }
-    // },
-    // computed: {
-    //     pages() {
-    //         return Math.ceil(this.list.length / 5)
-    //     }
-    // }
+    },
 }
 </script>
 
