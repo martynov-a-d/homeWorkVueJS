@@ -3,7 +3,7 @@
       <p class="pagination_block-elem" 
         v-for="item in this.list" 
         :key="item.id" 
-        @click="paginationChoice"
+        @click="paginationChoice" 
       >
         {{ item.id }} <!-- Выводит нумерацию пагинации -->
       </p>
@@ -29,6 +29,8 @@ export default {
             const elem = +e.target.textContent
 
             this.dataSourse = this.list
+            //---- Метод для передачи родителю события и данные ----//
+            this.$emit('click', this.dataSourse)
             //---- Не забудь!) ----/
             console.log(elem) // Выводит занчение id
             console.log(this.dataSourse[elem - 1].id - 1) // Выводит значение index

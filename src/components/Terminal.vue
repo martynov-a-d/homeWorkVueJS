@@ -16,11 +16,11 @@
           class="payDisplay-block"
         >
           <!-- Блок рендера транзакций -->
-          <PayDisplay :list="elem" />
+          <PayDisplay :list="elem" /> <!-- Добавить в этот компонент данные, переданые через $event из PaginationBlock -->
         </tr>
       </table>
       <!-- Блок пагинации -->
-      <PaginationBlock :list="getPurchaseList" />
+      <PaginationBlock :list="getPurchaseList" @click.capture="test($event)"/>
     </div>
   </div>
 </template>
@@ -37,6 +37,7 @@ export default {
       isHidenNewTrans: false,
       purchase: [], //  Обработанные данные с сервера
       res: [], // Необработанные данные с сервера
+      test1: [], // Данные полученые из PaginationBlock
     };
   },
   methods: {
@@ -55,6 +56,12 @@ export default {
     ...mapMutations([
       'setPurchaseListData', 'addNewTrans'
     ]),
+    //---- Функция обрабатывает $event из PaginationBlock ----//
+    //---- НЕ ЗАБУДЬ ПЕРЕИМЕНОВАТЬ!!!! ----//
+    test(elem) {
+      this.test1 = elem
+      console.log(this.test1);
+    }
   },
   computed: {
     ...mapGetters([
