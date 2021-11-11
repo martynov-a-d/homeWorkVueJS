@@ -29,6 +29,7 @@ export default {
          */
         addNewTrans(state, elem) {
             state.purchase=[...state.purchase, elem]
+            // state.purchase.unshift(elem)
         },
     },
     //---- Поле State ----//
