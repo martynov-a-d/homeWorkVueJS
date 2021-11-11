@@ -11,7 +11,7 @@
           <p class="titleElem">Value</p>
         </div>
       <table>
-        <tr v-for="elem in getPurchaseList" 
+        <tr v-for="elem in pagData" 
           :key="elem.id" 
           class="payDisplay-block"
         >
@@ -20,7 +20,7 @@
         </tr>
       </table>
       <!-- Блок пагинации -->
-      <PaginationBlock :list="getPurchaseList" @click.capture="test($event)"/>
+      <PaginationBlock :list="getPurchaseList" @click.capture="pagEventHandler($event)"/>
     </div>
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
       isHidenNewTrans: false,
       purchase: [], //  Обработанные данные с сервера
       res: [], // Необработанные данные с сервера
-      test1: [], // Данные полученые из PaginationBlock
+      pagData: [], // Данные полученые из PaginationBlock
     };
   },
   methods: {
@@ -57,10 +57,8 @@ export default {
       'setPurchaseListData', 'addNewTrans'
     ]),
     //---- Функция обрабатывает $event из PaginationBlock ----//
-    //---- НЕ ЗАБУДЬ ПЕРЕИМЕНОВАТЬ!!!! ----//
-    test(elem) {
-      this.test1 = elem
-      console.log(this.test1);
+    pagEventHandler(elem) {
+      this.pagData = elem
     }
   },
   computed: {
