@@ -38,7 +38,7 @@ export default {
             //---- Метод для передачи родителю события и данные ----//
             this.$emit('click', this.dataSourse.reverse())
             //---- Не забудь!) ----/
-            console.log(this.list);
+            // console.log(this.list);
             // console.log(elem) // Выводит занчение id
             // console.log(this.dataSourse[elem - 1].id - 1) // Выводит значение index
             // console.log(this.dataSourse[elem - 1].name) // Выводит значение name
