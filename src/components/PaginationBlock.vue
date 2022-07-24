@@ -27,7 +27,6 @@ export default {
     props: ['list'],
     created() {
       this.countPageMaker()
-      // return this.testNum = [{id: 1},{id: 2},{id: 3}]
     },
     methods: {
         //---- Функция отображает выбраную страницу с транзакциями ----//
@@ -37,11 +36,6 @@ export default {
             this.pageMaker(this.countPage, elem)
             //---- Метод для передачи родителю события и данные ----//
             this.$emit('click', this.dataSourse.reverse())
-            //---- Не забудь!) ----/
-            // console.log(this.list);
-            // console.log(elem) // Выводит занчение id
-            // console.log(this.dataSourse[elem - 1].id - 1) // Выводит значение index
-            // console.log(this.dataSourse[elem - 1].name) // Выводит значение name
         },
         //---- Вычисляет какие транзакции показать на выбраной странице ----//
         pageMaker(countPage, elem) {
