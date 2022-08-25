@@ -3,60 +3,60 @@
         "id": 1,
         "name": "eat",
         "date": "2021-10-17",
-        "price": 320
+        "price": 1010
     },
     {
         "id": 2,
         "name": "cafe",
         "date": "2021-10-18",
-        "price": 540
+        "price": 1020
     },
     {
         "id": 3,
         "name": "car",
         "date": "2021-10-18",
-        "price": 1300
+        "price": 1030
     },
     {
         "id": 4,
         "name": "shoping",
         "date": "2021-10-18",
-        "price": 5400
+        "price": 1040
     },
     {
         "id": 5,
         "name": "car",
         "date": "2021-10-18",
-        "price": 1300
+        "price": 1050
     },
     {
         "id": 6,
         "name": "shoping",
         "date": "2021-10-18",
-        "price": 5400
+        "price": 1060
     },
     {
         "id": 7,
         "name": "car",
         "date": "2021-10-18",
-        "price": 1300
+        "price": 1070
     },
     {
         "id": 8,
         "name": "shoping",
         "date": "2021-10-18",
-        "price": 5400
+        "price": 1080
     },
     {
         "id": 9,
         "name": "car",
         "date": "2021-10-18",
-        "price": 1300
+        "price": 1090
     },
     {
         "id": 10,
-        "name": "shoping",
+        "name": "eat",
         "date": "2021-10-18",
-        "price": 5400
+        "price": 10100
     }
 ]
